@@ -7,9 +7,8 @@ $email = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $email = clean_input($_POST['email']);
-    $password = $_POST['password'];
-
+$email = clean_input($_POST['email'] ?? '');
+$password = $_POST['password'] ?? '';
     if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
         $errors[] = "Session expired. Please try again.";
     } elseif (empty($email) || empty($password)) {
