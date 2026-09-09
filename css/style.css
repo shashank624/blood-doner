@@ -1,0 +1,344 @@
+/* =========================================================
+   Blood Donor Finder — Professional Stylesheet
+   ========================================================= */
+
+:root {
+    --color-primary: #c0143c;
+    --color-primary-dark: #8f0e2c;
+    --color-primary-light: #e63958;
+    --color-success: #1a9d5c;
+    --color-warning: #e6a70a;
+    --color-info: #0d8fb2;
+    --color-secondary: #6c757d;
+    --color-bg: #f4f6fa;
+    --color-surface: #ffffff;
+    --color-text: #212529;
+    --color-text-muted: #6b7280;
+    --color-border: #e5e7eb;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+}
+
+/* ---------- Base ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+a {
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar.bg-danger {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)) !important;
+    box-shadow: 0 2px 12px rgba(192, 20, 60, 0.25);
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 0.925rem;
+    padding: 0.5rem 0.9rem !important;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 1.25rem;
+    transition: all var(--transition-fast);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    border: none;
+    box-shadow: 0 4px 12px rgba(192, 20, 60, 0.25);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 6px 16px rgba(192, 20, 60, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger {
+    border-width: 1.5px;
+    font-weight: 500;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-outline-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.825rem;
+}
+
+/* ---------- Cards & Containers ---------- */
+
+.form-box {
+    background: var(--color-surface);
+    padding: 2.25rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-top: 2.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.stat-card {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card h4 {
+    font-weight: 700;
+    font-size: 1.85rem;
+    margin-bottom: 0.15rem;
+    color: var(--color-primary-dark);
+}
+
+.stat-card p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ---------- Donor Cards (search results) ---------- */
+
+.donor-card {
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    background: var(--color-surface);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.donor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.donor-card h6 {
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+/* ---------- Badges ---------- */
+
+.badge {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+}
+
+.status-Pending, .bg-warning-subtle {
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
+}
+
+.status-InProgress, .bg-info-subtle {
+    background-color: #dbeafe !important;
+    color: #1e40af !important;
+}
+
+.status-Resolved, .bg-success-subtle {
+    background-color: #d1fae5 !important;
+    color: #065f46 !important;
+}
+
+/* ---------- Forms ---------- */
+
+.form-label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    margin-bottom: 0.4rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.925rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(192, 20, 60, 0.12);
+}
+
+.form-text {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border-radius: var(--radius-sm);
+    border: none;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #15803d;
+}
+
+.alert-warning {
+    background-color: #fffbeb;
+    color: #b45309;
+}
+
+/* ---------- Tables ---------- */
+
+.table {
+    font-size: 0.9rem;
+}
+
+.table thead.table-dark th {
+    background-color: #1f2937;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: none;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(192, 20, 60, 0.04);
+}
+
+/* ---------- Pagination ---------- */
+
+.pagination .page-link {
+    border-radius: var(--radius-sm);
+    margin: 0 3px;
+    color: var(--color-primary-dark);
+    border: 1.5px solid var(--color-border);
+    font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+}
+
+/* ---------- Avatars ---------- */
+
+.rounded-circle {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ---------- Utility ---------- */
+
+.text-muted {
+    color: var(--color-text-muted) !important;
+}
+
+hr {
+    border-color: var(--color-border);
+    opacity: 1;
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 576px) {
+    .form-box {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        border-radius: var(--radius-md);
+    }
+
+    .stat-card h4 {
+        font-size: 1.35rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.05rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}
