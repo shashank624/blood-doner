@@ -30,7 +30,6 @@ A PHP + MySQL web application to help people find blood donors by blood group an
 ## Default Login
 
 Admin Email: admin@blooddonor.com
-Admin Password: admin123
 
 ## Future Scope
 
