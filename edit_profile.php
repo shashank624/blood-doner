@@ -11,6 +11,7 @@ $stmt->bind_param("i", $donor_id);
 $stmt->execute();
 $me = $stmt->get_result()->fetch_assoc();
 
+$full_name = $me['full_name'];
 $phone = $me['phone'];
 $blood_group = $me['blood_group'];
 $city = $me['city'];
@@ -19,6 +20,7 @@ $is_available = $me['is_available'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    $full_name = clean_input($_POST['full_name'] ?? '');
     $phone = clean_input($_POST['phone']);
     $blood_group = clean_input($_POST['blood_group']);
     $city = clean_input($_POST['city']);
@@ -67,18 +69,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $conn->prepare("UPDATE donors SET phone = ?, blood_group = ?, city = ?, last_donation_date = ?, is_available = ?, photo = ? WHERE id = ?");
-        $stmt->bind_param("ssssssi", $phone, $blood_group, $city, $date_value, $is_available, $photo_filename, $donor_id);
+    $stmt = $conn->prepare("UPDATE donors SET full_name = ?, phone = ?, blood_group = ?, city = ?, last_donation_date = ?, is_available = ?, photo = ? WHERE id = ?");
+    $stmt->bind_param("sssssssi", $full_name, $phone, $blood_group, $city, $date_value, $is_available, $photo_filename, $donor_id);
 
-        if ($stmt->execute()) {
-            $_SESSION['success'] = "Profile updated successfully.";
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $errors[] = "Something went wrong. Please try again.";
-        }
-        $stmt->close();
+    if ($stmt->execute()) {
+         $_SESSION['full_name'] = $full_name;
+        $_SESSION['success'] = "Profile updated successfully.";
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        $errors[] = "Something went wrong. Please try again.";
     }
+    $stmt->close();
+}
 }
 ?>
 <!DOCTYPE html>
@@ -123,13 +126,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     <?php endif; ?>
                 </div>
+               <div class="mb-3">
+    <label class="form-label">Profile Photo</label>
+    <input type="file" name="photo" class="form-control" accept="image/jpeg,image/png,image/webp">
+    <div class="form-text">Leave empty to keep your current photo. Max 2MB.</div>
+</div>
 
-                <div class="mb-3">
-                    <label class="form-label">Profile Photo</label>
-                    <input type="file" name="photo" class="form-control" accept="image/jpeg,image/png,image/webp">
-                    <div class="form-text">Leave empty to keep your current photo. Max 2MB.</div>
-                </div>
-
+<div class="mb-3">
+    <label class="form-label">Full Name</label>
+    <input type="text" name="full_name" class="form-control"
+           value="<?php echo htmlspecialchars($full_name); ?>">
+</div>
+                
                 <div class="mb-3">
                     <label class="form-label">Phone Number</label>
                     <input type="text" name="phone" class="form-control" value="<?php echo htmlspecialchars($phone); ?>">
