@@ -27,9 +27,6 @@ A PHP + MySQL web application to help people find blood donors by blood group an
 4. Open http://localhost/phpmyadmin, import database.sql
 5. Visit http://localhost/blood-donor/ in your browser
 
-## Default Login
-
-Admin Email: admin@blooddonor.com
 
 ## Future Scope
 
